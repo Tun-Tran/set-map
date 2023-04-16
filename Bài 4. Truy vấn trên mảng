@@ -1,0 +1,63 @@
+#include <iostream>
+#include<vector>
+
+using namespace std;
+
+
+int main(){
+    
+    int n;
+    cin >> n;
+    
+    vector<int> v(n);
+    for(int i=0; i<n; i++){
+        cin >> v[i];
+    }
+
+    int q;
+    
+    cin >> q;
+
+    while(q--){
+        int type, x;
+        cin >> type >> x;
+
+        if(type == 1){
+            v.push_back(x);
+        }
+
+        else if(type == 2){
+            bool found = false;
+            for(auto it = v.begin(); it != v.end(); it++){
+                if(*it == x){
+                    v.erase(it);
+                    found = true;
+                    break;
+                }
+            }
+
+            if(!found){
+                continue;
+            }
+        }
+
+        else if(type == 3){
+            bool found = false;
+            for(auto it = v.begin(); it!= v.end(); it++){
+                if(*it == x){
+                    found = true;
+                    break;
+                }
+            }
+
+            if(found){
+                cout << "YES" << endl;
+            }
+            else{
+                cout << "NO" << endl;
+            }
+        }
+    }
+
+    return 0;
+}
